@@ -68,3 +68,99 @@ data.update([5,6])
 data.remove(3)
 ```
 
+---
+# 2. 조건문
+
+```
+score = 85
+
+if score >= 80:
+    pass # 나중에 작성할 소스코드
+else:
+    print('성적이 80점 미만입니다')
+
+print('프로그램을 종료합니다.')
+```
+```
+score = 85
+
+if score >= 80: result = 'Success'
+else: result = 'Fail'
+```
+```
+score = 85
+result = "Success" if score >= 80 else "Fail"
+```
+
+---
+
+# 3. 반복문
+
+---
+
+# 4. 함수
+
+```
+def add(a,b):
+    print(a+b)
+
+add(b = 3, a = 7)
+```
+```
+a = 0
+
+def func():
+    global a
+    a += 1
+
+for i in range(10):
+    func()
+
+print(a)
+```
+
+```
+def add(a,b):
+    return a+b
+
+# 일반적인 add() 메서드 사용
+print(add(3, 7))
+
+# 람다 표현식으로 구현한 add() 메서드
+print((lambda a, b: a + b)(3,7))
+```
+
+---
+
+# 5. 입출력
+
+**입력을 위한 전형적인 소스코드**
+```
+# 데이터의 개수 입력
+n = int(input())
+# 각 데이터를 공백으로 구분하여 입력
+data = list(map(int, input().split()))
+
+data.sort(reverse = True)
+print(data)
+```
+**공백을 기준으로 구분하여 적은 수의 데이터 입력**
+```
+# n, m, k를 공백으로 구분하여 입력
+n, m, k = map(int,input().split())
+```
+
+```
+import sys
+sys.stdin.readline().rstrip()
+```
+
+```
+answer = 7
+print(f"정답은 {answer}입니다.")
+```
+
+---
+
+# 6. 주요 라이브러리의 문법과 유의점
+
