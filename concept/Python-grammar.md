@@ -42,3 +42,29 @@ remove_set = {3,5}
 result [i for i in a if not in remove_set]
 print(result)
 ```
+
+*파이썬에서 리스트, 문자열, 튜플 등 순차적인 정보를 담는 자료형을 iterable 자료형이라고 한다. in 문법은 이러한 iterable 자료형에 모두 사용이 가능하다.*
+
+## 집합 자료형
+### 집합 자료형의 연산
+```
+a = set([1,2,3,4,5])
+b = set([3,4,5,6,7])
+
+print(a | b)
+print(a & b)
+print(a - b)
+```
+
+### 집합 자료형 관련 함수
+```
+# 새로운 원소 추가
+data.add(4)
+
+# 새로운 원소 여러 개 추가
+data.update([5,6])
+
+# 특정한 값을 갖는 원소 삭제
+data.remove(3)
+```
+
