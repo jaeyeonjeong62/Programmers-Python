@@ -187,18 +187,156 @@ data.sort()
 ## itertools
 파이썬에서 반복되는 형태의 데이터를 처리하는 기능을 제공하는 라이브러리. 순열과 조합 라이브러리를 제공
 
+```python
+from itertools import permutations
+
+data = ['A', 'B', 'C']
+result = list(permutations(data,3)) #모든 순열 구하기
+```
+
+```python
+from itertools import combinations
+
+data = ['A', 'B', 'C']
+result = list(combinations(data,2)) #2개를 뽑는 모든 조합 구하기
+```
+```python
+from itertools import product
+
+data = ['A', 'B', 'C']
+result = list(product(data,repeat=2)) #2개를 뽑는 모든 순열 구하기(중복 허용)
+```
+
+```python
+from itertools import combinations_with_replacement
+
+data = ['A', 'B', 'C']
+result = list(combinations_with_replacement(data,2)) #2개를 뽑는 모든 조합 구하기(중복 허용)
+```
 
 
 ## heapq
 힙(Heap) 기능을 제공하는 라이브러리.
 우선순위 큐 기능을 구현하기 위해 사용
 
+```python
+import heapq
+
+def heapsort(iterable):
+    h = []
+    result = []
+    #모든 원소를 차례대롤 힙에 삽입
+    for value in iterable:
+        heapq.heappush(h, value)
+    #힙에 삽입된 모든 원소를 차례대로 꺼내어 담기
+    for i in range(len(h)):
+        result.append(heapq.heappop(h))
+    return result
+
+    result = heapsort([1,3,5,7,9,2,4,6,8,0])
+```
+
+```python
+import heapq
+
+def heapsort(iterable):
+    h = []
+    result = []
+    #모든 원소를 차례대롤 힙에 삽입
+    for value in iterable:
+        heapq.heappush(h, -value)
+    #힙에 삽입된 모든 원소를 차례대로 꺼내어 담기
+    for i in range(len(h)):
+        result.append(-heapq.heappop(h))
+    return result
+
+    result = heapsort([1,3,5,7,9,2,4,6,8,0])
+```
+
+
 ## bisect
 이진 탐색(Binary Search) 기능을 제공하는 라이브러리
+
+- `bisect_left(a,x)`: 정렬된 순서를 유지하면서 리스트 a에 데이터 x를 삽입할 가장 왼쪽 인덱스를 찾는 메서드
+- `bisect_right(a,x)`: 정렬된 순서를 유지하도록 리스트 a에 데이터 x를 삽입할 가장 오른쪽 인덱스를 찾는 메서드
+
+```python
+from bisect import bisect_left, bisect_right
+
+a = [1,2,4,4,8]
+x = 4
+
+print(bisect_left(a,x))
+print(bisect_right(a,x))
+```
+
+```python
+from bisect_import bisect_left, bisect_right
+
+#값이 [left_value, right_value]인 데이터의 개수를 반환하는 함수
+def count_by_range(a, left_value, right_value):
+    right_index = bisect_right(a,right_value)
+    left_index = bisect_left(a,left_value)
+    return right_index - left_index
+
+a = [1,2,3,3,3,3,4,4,8,9]
+print(count_by_range(a,4,4))
+```
+
 
 ## collections
 덱(deque), 카운터(Counter) 등의 유용한 자료구조를 포함하고 있는 라이브러리
 
+### `deque`
+
+```python
+from collections import deque
+
+data = deque([2,3,4])
+data.appendleft(1)
+data.append(5)
+
+print(data)
+print(list(data)) #리스트 자료형으로 변환
+```
+
+### `Counter`
+
+```python
+from collections import Counter
+
+counter = Counter(['red', 'blue', 'red', 'green', 'blue', 'blue'])
+
+print(counter('blue')) #'blue'가 등장한 횟수 출력
+print(dict(counter)) #사전 자료형으로 변환
+```
+
+
 ## math
 필수적인 수학적 기능을 제공하는 라이브러리. 팩토리얼, 제곱근, 최대공약수(GCD), 삼각함수 관련 함수부터 파이(pi)와 같은 상수를 포함
+
+```python
+import math
+
+print(math.factorial(5)) #5 팩토리얼을 출력
+```
+
+```python
+import math
+
+print(math.sqrt(7)) #7의 제곱근을 출력
+```
+
+```python
+import math
+
+print(math.gcd(21,14))
+```
+
+```python
+import math
+
+print(math.pi) #파이(pi) 출력
+print(math.e) #자연상수 e 출력
+```
 
